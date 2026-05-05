@@ -1,8 +1,8 @@
-# Docker images
+# Custom Docker images
 
-[![Scheduled build (Ubuntu)](https://github.com/catthehacker/docker_images/actions/workflows/build-ubuntu.yml/badge.svg?event=schedule)](https://github.com/catthehacker/docker_images/actions/workflows/build-ubuntu.yml)
-[![On-demand build (Ubuntu)](https://github.com/catthehacker/docker_images/actions/workflows/build-ubuntu.yml/badge.svg?event=workflow_dispatch)](https://github.com/catthehacker/docker_images/actions/workflows/build-ubuntu.yml)
-[![Linter](https://github.com/catthehacker/docker_images/actions/workflows/lint.yml/badge.svg)](https://github.com/catthehacker/docker_images/actions/workflows/lint.yml)
+> Intended for use with Forgejo Runner & Forgejo Actions. Not required to be used under those circumstances.
+
+[![Scheduled build (Ubuntu)](https://github.com/Ryubing/oci/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/Ryubing/oci/actions/workflows/build-ubuntu.yml)
 
 ## When updates will be applied to images
 
@@ -75,3 +75,4 @@
 [nektos/act]: https://github.com/nektos/act
 [actions/virtual-environments]: https://github.com/actions/virtual-environments
 [catthehacker/virtual-environments-fork]: https://github.com/catthehacker/virtual-environments-fork/tree/master/images/linux
+[forgejo/runner]: https://code.forgejo.org/forgejo/runner/
