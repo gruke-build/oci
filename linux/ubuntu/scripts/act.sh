@@ -157,11 +157,13 @@ case "$(uname -m)" in
   'aarch64')
     scripts=(
       yq
+      gli
     )
     ;;
   'x86_64')
     scripts=(
       yq
+      gli
     )
     ;;
   *) exit 1 ;;
