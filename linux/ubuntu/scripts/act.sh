@@ -34,6 +34,8 @@ ACT_TOOLSDIRECTORY=/opt/acttoolcache
   echo "ACT_TOOLSDIRECTORY=${ACT_TOOLSDIRECTORY}"
 } | tee -a "/etc/environment"
 
+cat /etc/environment
+
 mkdir -m 0777 -p "${AGENT_TOOLSDIRECTORY}"
 chown -R 1001:1000 "${AGENT_TOOLSDIRECTORY}"
 mkdir -m 0777 -p "${ACT_TOOLSDIRECTORY}"
