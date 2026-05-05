@@ -23,6 +23,7 @@ SHELL [ "/bin/bash", "--login", "-e", "-o", "pipefail", "-c" ]
 WORKDIR /tmp
 
 COPY ./linux/${DISTRO}/scripts /imagegeneration/installers
+RUN find /imagegeneration/installers -type f -exec chmod 777 {} \;
 RUN bash /imagegeneration/installers/${TYPE}.sh
 
 ARG BUILD_DATE
