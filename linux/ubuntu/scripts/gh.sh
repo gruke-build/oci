@@ -10,7 +10,6 @@
 ARCH=$(uname -m)
 if [ "$ARCH" = x86_64 ]; then ARCH=amd64; fi
 if [ "$ARCH" = aarch64 ]; then ARCH=arm64; fi
-if [ "$ARCH" = armv7l ]; then ARCH=armv6; fi
 
 url=$(curl -s https://api.github.com/repos/cli/cli/releases/latest | jq -r ".assets[].browser_download_url|select(contains(\"linux\") and contains(\"$ARCH\") and contains(\".deb\"))")
 wget -q "$url" -O "/tmp/gh.deb"

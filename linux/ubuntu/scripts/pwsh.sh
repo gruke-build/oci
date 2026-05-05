@@ -20,7 +20,6 @@ printf "\n\t🐋 Installing PowerShell 🐋\t\n"
 ARCH=$(uname -m)
 if [ "$ARCH" = x86_64 ]; then ARCH=x64; fi
 if [ "$ARCH" = aarch64 ]; then ARCH=arm64; fi
-if [ "$ARCH" = armv7l ]; then ARCH=arm32; fi
 VER=$(curl --silent "https://api.github.com/repos/PowerShell/PowerShell/releases/latest" | jq -r .tag_name)
 curl -L -o /tmp/powershell.tar.gz "https://github.com/PowerShell/PowerShell/releases/download/$VER/powershell-${VER:1}-linux-$ARCH.tar.gz"
 sudo mkdir -p "/opt/microsoft/powershell/${VER:1:1}"
