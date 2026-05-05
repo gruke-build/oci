@@ -58,7 +58,6 @@ packages=(
   ca-certificates
   software-properties-common
   apt-transport-https
-  libfuse2t64
   libyaml-0-2
   zstd
   zip
@@ -73,6 +72,12 @@ packages=(
 
 apt-get -yq update
 apt-get -yq install --no-install-recommends --no-install-suggests "${packages[@]}"
+
+if [ "${VERSION_ID}" == "22.04" ]; then
+  apt-get -yq install --no-install-recommends --no-install-suggests libfuse2
+else
+  apt-get -yq install --no-install-recommends --no-install-suggests libfuse2t64
+fi
 
 ln -s "$(which python3)" "/usr/local/bin/python"
 
