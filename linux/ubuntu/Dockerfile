@@ -40,7 +40,7 @@ LABEL org.opencontainers.image.source="https://github.com/${BUILD_OWNER}/${BUILD
 LABEL org.opencontainers.image.documentation="https://github.com/${BUILD_OWNER}/${BUILD_REPO}"
 LABEL org.opencontainers.image.version="${BUILD_TAG_VERSION}"
 LABEL org.opencontainers.image.title="${BUILD_TAG}-${TARGETARCH}"
-LABEL org.opencontainers.image.description="Special image built for using with https://github.com/nektos/act"
+LABEL org.opencontainers.image.description="Special image built for use with https://code.forgejo.org/forgejo/runner"
 LABEL org.opencontainers.image.revision="${BUILD_REF}"
 
 USER ${RUNNER}
