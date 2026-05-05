@@ -36,23 +36,23 @@ case "$(uname -m)" in
   'aarch64')
     scripts=(
       basic
+      dotnet
       gh
-      pwsh
       go
       js
-      dotnet
+      pwsh
     )
     ;;
   'x86_64')
     scripts=(
       basic
+      dotnet
       gh
-      pwsh
       go
       js
+      pwsh
       rust
       vcpkg
-      dotnet
     )
     ;;
   *) exit 1 ;;
