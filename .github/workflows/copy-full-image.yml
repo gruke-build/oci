@@ -12,8 +12,6 @@ on:
 env:
   SLUG: ${{ github.repository_owner }}/ubuntu
   PUSH_GHCR: ${{ github.repository == (github.event.pull_request.head.repo.full_name || github.repository) && '1' || '' }}
-  # PUSH_QUAY: ${{ secrets.QUAY_USER && secrets.QUAY_TOKEN && '1' || '' }}
-  PUSH_DOCKER_HUB: ${{ secrets.DOCKER_USER && secrets.DOCKER_TOKEN && '1' || '' }}
 
 defaults:
   run:
@@ -38,7 +36,7 @@ jobs:
           dest: full-20.04
     steps:
       - name: Force SLUG to lowercase
-        uses: actions/github-script@v6
+        uses: actions/github-script@v9
         with:
           github-token: n/a
           script: |
@@ -47,11 +45,3 @@ jobs:
       - name: Login to GitHub Container Registry
         if: env.PUSH_GHCR
         run: skopeo copy -a --src-creds ${{ github.actor }}:${{ github.token }} --dest-creds ${{ github.actor }}:${{ github.token }} docker://${{ matrix.copy.src }} docker://ghcr.io/${{ env.SLUG }}:${{ matrix.copy.dest }}
-
-      # - name: Login to Quay
-      #   if: env.PUSH_QUAY
-      #   run: skopeo copy -a --src-creds ${{ github.actor }}:${{ github.token }} --dest-creds ${{ secrets.QUAY_USER }}:${{ secrets.QUAY_TOKEN }} docker://${{ matrix.copy.src }} docker://quay.io/${{ env.SLUG }}:${{ matrix.copy.dest }}
-
-      - name: Login to Docker Hub
-        if: env.PUSH_DOCKER_HUB
-        run: skopeo copy -a --src-creds ${{ github.actor }}:${{ github.token }} --dest-creds ${{ secrets.DOCKER_USER }}:${{ secrets.DOCKER_TOKEN }} docker://${{ matrix.copy.src }} docker://docker.io/${{ env.SLUG }}:${{ matrix.copy.dest }}

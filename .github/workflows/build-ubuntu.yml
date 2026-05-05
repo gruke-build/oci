@@ -26,9 +26,10 @@ env:
   BUILD_REF: ${{ github.sha }}
   SKIP_TEST: false
   PUSH_GHCR: ${{ github.repository == (github.event.pull_request.head.repo.full_name || github.repository) && '1' || '' }}
-  # PUSH_QUAY: ${{ secrets.QUAY_USER && secrets.QUAY_TOKEN && '1' || '' }}
-  PUSH_DOCKER_HUB: ${{ secrets.DOCKER_USER && secrets.DOCKER_TOKEN && '1' || '' }}
   LATEST_TAG: 24.04
+
+permissions:
+  packages: write
 
 defaults:
   run:
@@ -55,7 +56,7 @@ jobs:
       - name: Disable apparmor restrictions
         run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version: '>=1.21.0'
       - name: Setup buildah
@@ -80,7 +81,7 @@ jobs:
           sudo apt-get install -y passt
 
       - name: Force SLUG to lowercase
-        uses: actions/github-script@v6
+        uses: actions/github-script@v9
         with:
           github-token: n/a
           script: |
@@ -89,14 +90,6 @@ jobs:
       - name: Login to GitHub Container Registry
         if: env.PUSH_GHCR
         run: exec buildah login -u ${{ github.actor }} -p ${{ github.token }} ghcr.io
-
-      # - name: Login to Quay
-      #   if: env.PUSH_QUAY
-      #   run: exec buildah login -u ${{ secrets.QUAY_USER }} -p ${{ secrets.QUAY_TOKEN }} quay.io
-
-      - name: Login to Docker Hub
-        if: env.PUSH_DOCKER_HUB
-        run: exec buildah login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_TOKEN }} docker.io
 
       - name: Print tag
         run: |
@@ -117,7 +110,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: Build and push ${{ env.DISTRO }}:${{ env.TAG }}
         shell: buildah unshare pwsh "{0}"
@@ -208,12 +201,12 @@ jobs:
               -tags $tags
 
       - if: ${{ !env.SKIP_TEST }}
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v6
         with:
           go-version: '^1.16'
 
       - if: ${{ !env.SKIP_TEST }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           repository: nektos/act
           path: act
@@ -275,7 +268,7 @@ jobs:
       - name: Disable apparmor restrictions
         run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version: '>=1.21.0'
       - name: Setup buildah
@@ -307,7 +300,7 @@ jobs:
           rm -r "$AGENT_TOOLSDIRECTORY" || :
         shell: bash
       - name: Force SLUG to lowercase
-        uses: actions/github-script@v6
+        uses: actions/github-script@v9
         with:
           github-token: n/a
           script: |
@@ -316,14 +309,6 @@ jobs:
       - name: Login to GitHub Container Registry
         if: env.PUSH_GHCR
         run: exec buildah login -u ${{ github.actor }} -p ${{ github.token }} ghcr.io
-
-      # - name: Login to Quay
-      #   if: env.PUSH_QUAY
-      #   run: exec buildah login -u ${{ secrets.QUAY_USER }} -p ${{ secrets.QUAY_TOKEN }} quay.io
-
-      - name: Login to Docker Hub
-        if: env.PUSH_DOCKER_HUB
-        run: exec buildah login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_TOKEN }} docker.io
 
       - name: Print tag
         run: |
@@ -344,7 +329,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: Build and push ${{ env.DISTRO }}:${{ env.TAG }}
         shell: buildah unshare pwsh "{0}"

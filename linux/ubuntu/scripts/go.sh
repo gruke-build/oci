@@ -33,7 +33,7 @@ for V in $(jq -r '.toolcache[] | select(.name == "go") | .versions[]' "/imagegen
 
   mkdir -v -m 0777 -p "$GOPATH"
   DL_VER="${VER}"
-  # hack (1.21.0 has the 0 in it's url)
+  # hack (1.21.0 has the 0 in its url)
   # TODO: i hate shell scripts, please can I have powershell on linux and no, python is not a solution, it should die
   # TODO: write own thing to get links from go.dev and versions from actions/go-versions, mash it together, ?????, works
   #if [[ "$(echo ${VER} | cut -d. -f3)" == "0" ]]; then
