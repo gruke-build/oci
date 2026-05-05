@@ -115,11 +115,11 @@ mkdir -m 0700 -p ~/.ssh
 printf "\n\t🐋 Installed base utils 🐋\t\n"
 
 printf "\n\t🐋 Installing docker cli 🐋\t\n"
-if [[ "${VERSION_ID}" == "18.04" ]]; then
-  echo "deb https://packages.microsoft.com/ubuntu/${VERSION_ID}/multiarch/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
-else
+#if [[ "${VERSION_ID}" == "18.04" ]]; then
+#  echo "deb https://packages.microsoft.com/ubuntu/${VERSION_ID}/multiarch/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
+#else
   echo "deb https://packages.microsoft.com/ubuntu/${VERSION_ID}/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
-fi
+#fi
 wget -q https://packages.microsoft.com/keys/microsoft.asc
 gpg --dearmor <microsoft.asc >/etc/apt/trusted.gpg.d/microsoft.gpg
 apt-key add - <microsoft.asc
