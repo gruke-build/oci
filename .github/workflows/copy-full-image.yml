@@ -16,6 +16,9 @@ env:
 defaults:
   run:
     shell: sh
+    
+permissions:
+  packages: write
 
 jobs:
   copy:
