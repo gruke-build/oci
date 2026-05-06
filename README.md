@@ -16,7 +16,7 @@ A set of custom Ubuntu OCI images, primary for use with [Forgejo Actions](https:
     </tr>
 </table>
 
-This is a fork of [catthehacker/docker_images](https://github.com/catthehacker/docker_images); used to create the `ghcr.io/catthehacher/ubuntu` images.<br/>
+This is a fork of [catthehacker/docker_images](https://github.com/catthehacker/docker_images); used to create the `ghcr.io/catthehacker/ubuntu` images.<br/>
 We have been using these docker images for some time, and they work well. However, there's some tools we'd like to have in them pre-installed to save workflow time.
 
 
