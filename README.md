@@ -7,7 +7,7 @@
           
 # Custom Ubuntu OCI images
 
-A set of custom Ubuntu OCI images, primary for use with [Forgejo Actions](https://forgejo.org/docs/latest/user/actions/overview/) on [Forgejo Runner](https://code.forgejo.org/forgejo/runner/).
+A set of custom Ubuntu OCI images,<br/>primarily for use with [Forgejo Actions](https://forgejo.org/docs/latest/user/actions/overview/) on [Forgejo Runner](https://code.forgejo.org/forgejo/runner/).
 
 [![Scheduled build (Ubuntu)](https://github.com/Ryubing/oci/actions/workflows/build-ubuntu.yml/badge.svg)](https://github.com/Ryubing/oci/actions/workflows/build-ubuntu.yml)
 <br>
