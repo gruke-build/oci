@@ -27,7 +27,7 @@ fi
 
 # Download AppImageTool from https://github.com/AppImage/appimagetool/releases/tag/continuous
 base_url="https://github.com/AppImage/appimagetool/releases/download/continuous"
-filename="appimagetool-$(ait_arch)"
+filename="appimagetool-$(ait_arch).AppImage"
 download_with_retries "${base_url}/${filename}" "/tmp" "appimagetool.AppImage"
 # Install AppImageTool
 sudo install /tmp/appimagetool.AppImage /usr/bin/appimagetool
