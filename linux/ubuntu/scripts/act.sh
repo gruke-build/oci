@@ -45,11 +45,9 @@ chown -R 1001:1000 /github
 
 printf "\n\t🐋 Installing packages 🐋\t\n"
 packages=(
-  appstream
   ssh
   gawk
   curl
-  desktop-file-utils
   jq
   wget
   sudo
@@ -66,7 +64,6 @@ packages=(
   python3-pip
   python3-venv
   pipx
-  zsync
 )
 
 apt-get -yq update
@@ -158,12 +155,14 @@ case "$(uname -m)" in
     scripts=(
       yq
       gli
+      appimage
     )
     ;;
   'x86_64')
     scripts=(
       yq
       gli
+      appimage
     )
     ;;
   *) exit 1 ;;

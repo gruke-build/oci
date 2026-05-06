@@ -19,6 +19,16 @@ function isUbuntu22() {
   [[ "${VERSION_ID}" =~ ^22\.(.*)$ ]]
 }
 
+function isUbuntu24() {
+  . /etc/os-release
+  [[ "${VERSION_ID}" =~ ^24\.(.*)$ ]]
+}
+
+function isUbuntu26() {
+  . /etc/os-release
+  [[ "${VERSION_ID}" =~ ^26\.(.*)$ ]]
+}
+
 function isUbuntuVer() {
   local ver=$1
   . /etc/os-release
