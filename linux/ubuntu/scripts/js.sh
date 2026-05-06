@@ -20,28 +20,6 @@ echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' | tee 
 printf "\n\t🐋 Installed NVM 🐋\t\n"
 nvm --version
 
-
-versions=("20" "24")
-JSON=$(wget -qO- https://nodejs.org/download/release/index.json | jq --compact-output)
-
-for V in "${versions[@]}"; do
-  printf "\n\t🐋 Installing NODE=%s 🐋\t\n" "${V}"
-  VER=$(echo "${JSON}" | jq "[.[] | select(.version|test(\"^v${V}\"))][0].version" -r)
-  NODEPATH="${ACT_TOOLSDIRECTORY}/node/${VER:1}/x64"
-
-  mkdir -v -m 0777 -p "$NODEPATH"
-  ARCH=$(uname -m)
-  if [ "$ARCH" = x86_64 ]; then ARCH=x64; fi
-  if [ "$ARCH" = aarch64 ]; then ARCH=arm64; fi
-  wget -qO- "https://nodejs.org/download/release/latest-v${V}.x/node-$VER-linux-$ARCH.tar.xz" | tar -Jxf - --strip-components=1 -C "$NODEPATH"
-
-  # ENVVAR="${V//\./_}"
-  # echo "${ENVVAR}=${NODEPATH}" >>/etc/environment
-
-  printf "\n\t🐋 Installed NODE 🐋\t\n"
-  "$NODEPATH/bin/node" -v
-done
-
 # npm timeout under qemu with defaults
 set -x
 npm config set fetch-timeout 120000
