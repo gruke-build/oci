@@ -174,6 +174,8 @@ for SCRIPT in "${scripts[@]}"; do
   "/imagegeneration/installers/${SCRIPT}.sh"
 done
 
+apt upgrade -y
+
 printf "\n\t🐋 Cleaning image 🐋\t\n"
 apt-get clean
 rm -rf /var/cache/* /var/log/* /var/lib/apt/lists/* /tmp/* || echo 'Failed to delete directories'
