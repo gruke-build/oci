@@ -157,6 +157,7 @@ case "$(uname -m)" in
       yq
       gli
       appimage
+      rcodesign
     )
     ;;
   'x86_64')
@@ -164,6 +165,7 @@ case "$(uname -m)" in
       yq
       gli
       appimage
+      rcodesign
     )
     ;;
   *) exit 1 ;;
