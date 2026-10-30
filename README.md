@@ -33,7 +33,7 @@ Notable modifications from the original `catthehacker` Docker images are:
   - `libfuse2t64`
 - Automatic inclusion of `git.ryujinx.app` into SSH known hosts.
 - Pre-installation of `7zip` via `apt`.
-- Ubuntu 20.04 as well as 32-bit ARM images are not created.
+- Ubuntu 22.04 (and below) images are not created.
 - We do not automatically create the `custom` or `rust` build flavors.
   - They (mostly Rust) take way too long to make, and we don't even use Rust in any project.
 - We do not automatically create the `gh` build flavor.
