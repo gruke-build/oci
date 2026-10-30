@@ -103,11 +103,7 @@ jobs:
 
       - name: Set Ubuntu version to RELEASE
         run: |
-          if [ "$LATEST_TAG" = "${{ matrix.TAG }}" ]; then
-            echo "RELEASE_TAG=$(lsb_release -rs)" | tee -a "$GITHUB_ENV"
-          else
-            echo "RELEASE_TAG=${{ matrix.TAG }}" | tee -a "$GITHUB_ENV"
-          fi
+          echo "RELEASE_TAG=${{ matrix.TAG }}" | tee -a "$GITHUB_ENV"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
@@ -304,11 +300,7 @@ jobs:
 
       - name: Set Ubuntu version to RELEASE
         run: |
-          if [ "$LATEST_TAG" = "${{ matrix.TAG }}" ]; then
-            echo "RELEASE_TAG=$(lsb_release -rs)" | tee -a "$GITHUB_ENV"
-          else
-            echo "RELEASE_TAG=${{ matrix.TAG }}" | tee -a "$GITHUB_ENV"
-          fi
+          echo "RELEASE_TAG=${{ matrix.TAG }}" | tee -a "$GITHUB_ENV"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
