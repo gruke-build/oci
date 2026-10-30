@@ -23,8 +23,6 @@ A set of custom Ubuntu OCI images,<br/>primarily for use with [Forgejo Actions](
   However, there's some tools we'd like to have in them pre-installed to save workflow time,<br/>bandwidth usage, and reduce reliance on Canonical server stability.
 </p>
 
-
-
 Notable modifications from the original `catthehacker` Docker images are:
 - Inclusion of [`gli`](https://github.com/GreemDev/GLI).
   - This is my personal CLI tool that I add things I find useful to.
@@ -32,7 +30,7 @@ Notable modifications from the original `catthehacker` Docker images are:
   - `zsync`
   - `desktop-file-utils`
   - `appstream`
-  - `libfuse2` (22.04) OR `libfuse2t64` (24.04)
+  - `libfuse2t64`
 - Automatic inclusion of `git.ryujinx.app` into SSH known hosts.
 - Pre-installation of `7zip` via `apt`.
 - Ubuntu 20.04 as well as 32-bit ARM images are not created.
@@ -54,46 +52,46 @@ Notable modifications from the original `catthehacker` Docker images are:
 
 ## Images available
 - [`/linux/ubuntu/act`](./linux/ubuntu/scripts/act.sh) - image used in [nektos/act](https://github.com/nektos/act) as medium size image retaining compatibility with most actions, with a small size
-  - `ghcr.io/gruke-build/ubuntu:act-22.04`
   - `ghcr.io/gruke-build/ubuntu:act-24.04`
-  - `ghcr.io/gruke-build/ubuntu:act-latest` (aka `act-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:act-26.04`
+  - `ghcr.io/gruke-build/ubuntu:act-latest` (aka `act-26.04`)
 - [`/linux/ubuntu/runner`](./linux/ubuntu/scripts/runner.sh) - `ghcr.io/gruke-build/ubuntu:act-*` but with `runner` as user instead of `root`
-  - `ghcr.io/gruke-build/ubuntu:runner-22.04`
   - `ghcr.io/gruke-build/ubuntu:runner-24.04`
-  - `ghcr.io/gruke-build/ubuntu:runner-latest` (aka `runner-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:runner-26.04`
+  - `ghcr.io/gruke-build/ubuntu:runner-latest` (aka `runner-26.04`)
 - [`/linux/ubuntu/js`](./linux/ubuntu/scripts/js.sh) - `ghcr.io/gruke-build/ubuntu:act-*` but with `js` tools installed (`yarn`, `nvm`, `node` v20/v24, `pnpm`, `grunt`, etc.)
-  - `ghcr.io/gruke-build/ubuntu:js-22.04`
   - `ghcr.io/gruke-build/ubuntu:js-24.04`
-  - `ghcr.io/gruke-build/ubuntu:js-latest` (aka `js-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:js-26.04`
+  - `ghcr.io/gruke-build/ubuntu:js-latest` (aka `js-26.04`)
 <!---
 - [`/linux/ubuntu/rust`](./linux/ubuntu/scripts/rust.sh) - `ghcr.io/gruke-build/ubuntu:act-*` but with `rust` tools installed (`rustfmt`, `clippy`, `cbindgen`, etc.)
-  - `ghcr.io/gruke-build/ubuntu:rust-22.04`
   - `ghcr.io/gruke-build/ubuntu:rust-24.04`
-  - `ghcr.io/gruke-build/ubuntu:rust-latest` (aka `act-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:rust-26.04`
+  - `ghcr.io/gruke-build/ubuntu:rust-latest` (aka `act-26.04`)
 -->
 - [`/linux/ubuntu/pwsh`](./linux/ubuntu/scripts/pwsh.sh) - `ghcr.io/gruke-build/ubuntu:act-*` but with `pwsh` tools and modules installed
-  - `ghcr.io/gruke-build/ubuntu:pwsh-22.04`
   - `ghcr.io/gruke-build/ubuntu:pwsh-24.04`
-  - `ghcr.io/gruke-build/ubuntu:pwsh-latest` (aka `pwsh-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:pwsh-26.04`
+  - `ghcr.io/gruke-build/ubuntu:pwsh-latest` (aka `pwsh-26.04`)
 - [`/linux/ubuntu/go`](./linux/ubuntu/scripts/go.sh) - `ghcr.io/gruke-build/ubuntu:act-*` but with `go` tools installed
-  - `ghcr.io/gruke-build/ubuntu:go-22.04`
   - `ghcr.io/gruke-build/ubuntu:go-24.04`
-  - `ghcr.io/gruke-build/ubuntu:go-latest` (aka `go-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:go-26.04`
+  - `ghcr.io/gruke-build/ubuntu:go-latest` (aka `go-26.04`)
 - [`/linux/ubuntu/dotnet`](./linux/ubuntu/scripts/dotnet.sh) - `ghcr.io/gruke-build/ubuntu:act-*` but with `.NET` tools installed
-  - `ghcr.io/gruke-build/ubuntu:dotnet-22.04`
   - `ghcr.io/gruke-build/ubuntu:dotnet-24.04`
-  - `ghcr.io/gruke-build/ubuntu:dotnet-latest` (aka `dotnet-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:dotnet-26.04`
+  - `ghcr.io/gruke-build/ubuntu:dotnet-latest` (aka `dotnet-26.04`)
 - [`/linux/ubuntu/java-tools`](./linux/ubuntu/scripts/java-tools.sh) - `ghcr.io/gruke-build/ubuntu:act-*` but with Java tools installed
-  - `ghcr.io/gruke-build/ubuntu:java-tools-22.04`
   - `ghcr.io/gruke-build/ubuntu:java-tools-24.04`
-  - `ghcr.io/gruke-build/ubuntu:java-tools-latest` (aka `java-tools-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:java-tools-26.04`
+  - `ghcr.io/gruke-build/ubuntu:java-tools-latest` (aka `java-tools-26.04`)
 - [`/linux/ubuntu/gh`](./linux/ubuntu/scripts/gh.sh) - `ghcr.io/gruke-build/ubuntu:act-*` but with GitHub CLI tools installed
-  - `ghcr.io/gruke-build/ubuntu:gh-22.04`
   - `ghcr.io/gruke-build/ubuntu:gh-24.04`
-  - `ghcr.io/gruke-build/ubuntu:gh-latest` (aka `gh-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:gh-26.04`
+  - `ghcr.io/gruke-build/ubuntu:gh-latest` (aka `gh-26.04`)
 <!---
 - [`/linux/ubuntu/custom`](./linux/ubuntu/scripts/custom.sh) - `ghcr.io/gruke-build/ubuntu:act-*` but with custom tools installed
-  - `ghcr.io/gruke-build/ubuntu:custom-22.04`
   - `ghcr.io/gruke-build/ubuntu:custom-24.04`
-  - `ghcr.io/gruke-build/ubuntu:custom-latest` (aka `custom-24.04`)
+  - `ghcr.io/gruke-build/ubuntu:custom-26.04`
+  - `ghcr.io/gruke-build/ubuntu:custom-latest` (aka `custom-26.04`)
 -->
