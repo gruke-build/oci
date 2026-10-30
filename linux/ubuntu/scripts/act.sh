@@ -105,19 +105,22 @@ printf "\n\t🐋 Updated apt lists and upgraded packages 🐋\t\n"
 printf "\n\t🐋 Creating ~/.ssh and adding known hosts 🐋\t\n"
 mkdir -m 0700 -p ~/.ssh
 {
+  ssh-keyscan codeberg.org
+  ssh-keyscan gitlab.com
   ssh-keyscan github.com
-  ssh-keyscan ssh.dev.azure.com
   ssh-keyscan git.ryujinx.app
+  ssh-keyscan ssh.dev.azure.com
 } >>/etc/ssh/ssh_known_hosts
 
 printf "\n\t🐋 Installed base utils 🐋\t\n"
 
 printf "\n\t🐋 Installing docker cli 🐋\t\n"
-echo "deb https://packages.microsoft.com/ubuntu/${VERSION_ID}/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
-wget -q https://packages.microsoft.com/keys/microsoft.asc
-gpg --dearmor <microsoft.asc >/etc/apt/trusted.gpg.d/microsoft.gpg
-# apt-key add - <microsoft.asc
-rm microsoft.asc
+echo "deb [signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/${VERSION_ID}/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
+
+mkdir -p /usr/share/keyrings
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O - | gpg --dearmor > /usr/share/keyrings/microsoft.gpg
+wget -q https://packages.microsoft.com/keys/microsoft-2025.asc -O - | gpg --dearmor >> /usr/share/keyrings/microsoft.gpg
+
 apt-get -yq update
 apt-get -yq install --no-install-recommends --no-install-suggests moby-engine moby-cli moby-buildx moby-compose
 
