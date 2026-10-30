@@ -152,7 +152,7 @@ apt-get install -y --no-install-recommends ant ant-optional
 echo "ANT_HOME=/usr/share/ant" | tee -a /etc/environment
 
 # Install Maven
-mavenVersion=$(get_toolset_value '.java.maven')
+mavenVersion="3.10.0"
 mavenDownloadUrl="https://dlcdn.apache.org/maven/maven-3/${mavenVersion}/binaries/apache-maven-${mavenVersion}-bin.zip"
 download_with_retries "${mavenDownloadUrl}" "/tmp" "maven.zip"
 unzip -qq -d /usr/share /tmp/maven.zip
