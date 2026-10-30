@@ -102,7 +102,7 @@ fi
 
 printf "\n\t🐋 Updated apt lists and upgraded packages 🐋\t\n"
 
-printf "\n\t🐋 Creating ~/.ssh and adding 'github.com' 🐋\t\n"
+printf "\n\t🐋 Creating ~/.ssh and adding known hosts 🐋\t\n"
 mkdir -m 0700 -p ~/.ssh
 {
   ssh-keyscan github.com
@@ -113,14 +113,10 @@ mkdir -m 0700 -p ~/.ssh
 printf "\n\t🐋 Installed base utils 🐋\t\n"
 
 printf "\n\t🐋 Installing docker cli 🐋\t\n"
-#if [[ "${VERSION_ID}" == "18.04" ]]; then
-#  echo "deb https://packages.microsoft.com/ubuntu/${VERSION_ID}/multiarch/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
-#else
-  echo "deb https://packages.microsoft.com/ubuntu/${VERSION_ID}/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
-#fi
+echo "deb https://packages.microsoft.com/ubuntu/${VERSION_ID}/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
 wget -q https://packages.microsoft.com/keys/microsoft.asc
 gpg --dearmor <microsoft.asc >/etc/apt/trusted.gpg.d/microsoft.gpg
-apt-key add - <microsoft.asc
+# apt-key add - <microsoft.asc
 rm microsoft.asc
 apt-get -yq update
 apt-get -yq install --no-install-recommends --no-install-suggests moby-engine moby-cli moby-buildx moby-compose
