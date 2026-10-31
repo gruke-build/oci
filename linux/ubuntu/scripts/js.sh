@@ -47,7 +47,7 @@ npm install -g vercel
 npm install -g webpack
 npm install -g webpack-cli
 npm install -g lerna
-npm install -g --unsafe-perm netlify-cli
+npm install -g netlify-cli
 
 printf "\n\t🐋 Installed NPM 🐋\t\n"
 npm -v
