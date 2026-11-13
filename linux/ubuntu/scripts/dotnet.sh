@@ -14,8 +14,8 @@ printf "\n\t🐋 Installing .NET 🐋\t\n"
 #apt-get install -y dotnet-sdk-7.0 dotnet-sdk-6.0 dotnet-runtime-7.0 dotnet-runtime-6.0
 curl -LO https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh
 cat ./dotnet-install.sh
-bash ./dotnet-install.sh --install-dir ${ACT_TOOLSDIRECTORY}/dotnet --no-path --channel STS  # net 9.0
 bash ./dotnet-install.sh --install-dir ${ACT_TOOLSDIRECTORY}/dotnet --no-path --channel LTS  # net 10.0
+bash ./dotnet-install.sh --install-dir ${ACT_TOOLSDIRECTORY}/dotnet --no-path --channel STS  # net 11.0
 rm ./dotnet-install.sh
 export DOTNET_ROOT=${ACT_TOOLSDIRECTORY}/dotnet
 export PATH=$PATH:$DOTNET_ROOT
