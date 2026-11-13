@@ -56,6 +56,7 @@ packages=(
   software-properties-common
   apt-transport-https
   libyaml-0-2
+  libicu-dev
   zstd
   zip
   7zip
